@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú - Panadería Rico Pan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@400;600;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracota:#c97a3f;
+    --terracota-dark:#a85f2c;
+    --choco:#4a2e1e;
+    --choco-2:#6b3f26;
+    --crema:#faf1e4;
+    --crema-2:#f0e0c8;
+    --rojo:#b4292f;
+    --blanco:#fffdf9;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:
+      radial-gradient(circle at 15% 10%, rgba(201,122,63,0.10), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(74,46,30,0.10), transparent 40%),
+      var(--crema);
+    font-family:'Nunito', sans-serif;
+    color:var(--choco);
+    padding:0 0 60px 0;
+  }
+
+  .page{
+    max-width:760px;
+    margin:0 auto;
+    background:var(--blanco);
+    box-shadow:0 10px 40px rgba(74,46,30,0.12);
+    min-height:100vh;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:relative;
+    background:radial-gradient(circle at 50% -10%, #7a4326 0%, var(--choco) 55%, #2f1c11 100%);
+    padding:44px 32px 70px 32px;
+    text-align:center;
+    overflow:hidden;
+  }
+
+  header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 14px);
+    pointer-events:none;
+  }
+
+  .logo-badge{
+    position:relative;
+    width:180px;
+    height:auto;
+    margin:0 auto 20px auto;
+    padding:0;
+    background:transparent;
+    box-shadow:none;
+  }
+  .logo-badge img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    border:none;
+    border-radius:0;
+    filter:drop-shadow(0 6px 8px rgba(0,0,0,0.35));
+  }
+
+  header h1{
+    font-family:'Alex Brush', cursive;
+    font-size:52px;
+    color:var(--crema-2);
+    line-height:1;
+    font-weight:400;
+    margin-bottom:4px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.25);
+  }
+
+  header h2{
+    font-family:'Montserrat', sans-serif;
+    font-weight:900;
+    font-size:44px;
+    letter-spacing:3px;
+    color:var(--blanco);
+    text-transform:uppercase;
+    text-shadow:0 3px 0 var(--terracota-dark);
+  }
+
+  header p.tagline{
+    margin-top:18px;
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--terracota);
+    font-weight:700;
+  }
+
+  /* scalloped bottom edge, echo of the "postage stamp" post */
+  .scallop{
+    position:relative;
+    height:26px;
+    background:var(--blanco);
+    margin-top:-1px;
+  }
+  .scallop::before{
+    content:"";
+    position:absolute;
+    top:-13px;left:0;right:0;height:26px;
+    background-image:radial-gradient(circle at 10px 0, transparent 12px, var(--blanco) 13px);
+    background-size:26px 26px;
+    background-position:center top;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  main{padding:8px 32px 10px 32px;}
+
+  .section{margin-top:44px;}
+
+  .section-title{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:6px;
+  }
+
+  .section-title .script{
+    font-family:'Alex Brush', cursive;
+    font-size:30px;
+    color:var(--terracota-dark);
+  }
+
+  .section-title .bold{
+    font-family:'Montserrat', sans-serif;
+    font-weight:900;
+    font-size:26px;
+    letter-spacing:1px;
+    color:var(--choco);
+    text-transform:uppercase;
+  }
+
+  .rule{
+    height:2px;
+    background:linear-gradient(90deg, var(--terracota) 0%, var(--crema-2) 100%);
+    margin-bottom:18px;
+    border-radius:2px;
+  }
+
+  .items{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    column-gap:32px;
+    row-gap:12px;
+  }
+
+  .item{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+
+  .item .name{
+    font-size:15px;
+    font-weight:600;
+    color:var(--choco-2);
+  }
+
+  .item .dots{
+    flex:1;
+    border-bottom:2px dotted var(--crema-2);
+    transform:translateY(-4px);
+  }
+
+  .item .price{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--rojo);
+    white-space:nowrap;
+  }
+
+  .item.wide{grid-column:1 / -1;}
+
+  /* pankey variant with multiple prices */
+  .price-multi{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--rojo);
+    white-space:nowrap;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:56px;
+    background:var(--choco);
+    color:var(--crema);
+    text-align:center;
+    padding:36px 24px 30px 24px;
+  }
+
+  footer .foot-logo{
+    font-family:'Alex Brush', cursive;
+    font-size:30px;
+    color:var(--blanco);
+    margin-bottom:6px;
+  }
+
+  footer p{
+    font-size:13px;
+    letter-spacing:1px;
+    color:var(--crema-2);
+    margin-top:4px;
+  }
+
+  footer .divider{
+    width:50px;height:2px;
+    background:var(--terracota);
+    margin:14px auto;
+  }
+
+  @media (max-width:520px){
+    header{padding:44px 20px 60px 20px;}
+    header h1{font-size:40px;}
+    header h2{font-size:32px;}
+    .items{grid-template-columns:1fr;}
+    main{padding:8px 20px 10px 20px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="logo-badge">
+      <img src="Logo.png.png" alt="Logo">
+    </div>
+    <h1>Nuestro</h1>
+    <h2>Menú</h2>
+    <p class="tagline">Tradición · Frescura · Sabor</p>
+  </header>
+  <div class="scallop"></div>
+
+  <main>
+
+    <div class="section">
+      <div class="section-title"><span class="script">Pan</span><span class="bold">Menudo</span></div>
+      <div class="rule"></div>
+      <div class="items">
+        <div class="item"><span class="name">Menudo pastel</span><span class="dots"></span><span class="price">$0.20</span></div>
+        <div class="item"><span class="name">Menudo poroso</span><span class="dots"></span><span class="price">$0.20</span></div>
+        <div class="item"><span class="name">Cachitos</span><span class="dots"></span><span class="price">$0.20</span></div>
+        <div class="item"><span class="name">Calcañal</span><span class="dots"></span><span class="price">$0.20</span></div>
+        <div class="item"><span class="name">Viejitas</span><span class="dots"></span><span class="price">$0.45</span></div>
+        <div class="item"><span class="name">Santaneca</span><span class="dots"></span><span class="price">$0.40</span></div>
+        <div class="item"><span class="name">Pastelitos piña y leche</span><span class="dots"></span><span class="price">$0.40</span>
+</div>
+        <div class="item"><span class="name">Picuda, polvosa y torta seca</span><span class="dots"></span><span class="price">$0.45</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="script">Salpores</span><span class="bold">y Semitas</span></div>
+      <div class="rule"></div>
+      <div class="items">
+        <div class="item"><span class="name">Salpor de arroz</span><span class="dots"></span><span class="price">$0.25</span></div>
+        <div class="item"><span class="name">Semita pacha de piña</span><span class="dots"></span><span class="price">$0.50</span></div>
+        <div class="item"><span class="name">Salpor almidón y maíz</span><span class="dots"></span><span class="price">$0.35</span></div>
+        <div class="item"><span class="name">Semita pacha de leche</span><span class="dots"></span><span class="price">$0.65</span></div>
+        <div class="item"><span class="name">Salpor de guayaba</span><span class="dots"></span><span class="price">$0.50</span></div>
+        <div class="item"><span class="name">Semita alta</span><span class="dots"></span><span class="price">$0.55</span></div>
+        <div class="item"><span class="name">Galleta de chocolate</span><span class="dots"></span><span class="price">$0.25</span></div>
+        <div class="item"><span class="name">Alfajor</span><span class="dots"></span><span class="price">$0.45</span></div>
+        <div class="item"><span class="name">Galleta sable</span><span class="dots"></span><span class="price">$0.35</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="script">Repostería</span><span class="bold">Especial</span></div>
+      <div class="rule"></div>
+      <div class="items">
+        <div class="item"><span class="name">Marranitas</span><span class="dots"></span><span class="price">$1.25</span></div>
+        <div class="item"><span class="name">Rol de canela</span><span class="dots"></span><span class="price">$0.95</span></div>
+        <div class="item"><span class="name">Coffee cake</span><span class="dots"></span><span class="price">$0.80</span></div>
+        <div class="item"><span class="name">Brazo</span><span class="dots"></span><span class="price">$0.80</span></div>
+        <div class="item"><span class="name">Relámpago</span><span class="dots"></span><span class="price">$0.90</span></div>
+        <div class="item"><span class="name">Torta de fruta</span><span class="dots"></span><span class="price">$0.75</span></div>
+        <div class="item"><span class="name">Budín / Quesadilla</span><span class="dots"></span><span class="price">$0.95</span></div>
+        <div class="item"><span class="name">Dona tradicional</span><span class="dots"></span><span class="price">$0.65</span></div>
+        <div class="item"><span class="name">Dona rellena</span><span class="dots"></span><span class="price">$0.70</span></div>
+        <div class="item"><span class="name">Herradura</span><span class="dots"></span><span class="price">$0.60</span></div>
+        <div class="item"><span class="name">Cópinol</span><span class="dots"></span><span class="price">$0.60</span>
+</div>
+        <div class="item"><span class="name">Cacho con jalea</span><span class="dots"></span><span class="price">$0.50</span>
+</div>
+        <div class="item"><span class="name">Novia</span><span class="dots"></span><span class="price">$0.50</span>
+</div>
+        <div class="item"><span class="name">María Luisa</span><span class="dots"></span><span class="price">$0.65</span></div>
+        <div class="item"><span class="name">Pegaditos</span><span class="dots"></span><span class="price">$0.35</span></div>
+        <div class="item"><span class="name">Muffin manzana/chocolate</span><span class="dots"></span><span class="price">$0.50</span>
+</div>
+        <div class="item"><span class="name">Torta de elote</span><span class="dots"></span><span class="price">$1.00</span>
+</div>
+        <div class="item"><span class="name">Pankey porción</span><span class="dots"></span><span class="price">$0.90</span>
+</div>
+        <div class="item wide">
+          <span class="name">Pankey torta</span><span class="dots"></span>
+          <span class="price-multi">$3.75 · $8.00 · $9.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span class="script">Salado</span><span class="bold">Chilenas</span></div>
+      <div class="rule"></div>
+      <div class="items">
+        <div class="item wide"><span class="name">Chilena de pollo, carne o jamón con queso</span><span class="dots"></span><span class="price">$2.00</span></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="foot-logo">Rico Pan</div>
+    <p>QUEZALTEPEQUE · LA LIBERTAD · EL SALVADOR</p>
+    <div class="divider"></div>
+    <p>Tradición que se disfruta a cada mordida</p>
+  </footer>
+
+</div>
+</body>
+</html>
