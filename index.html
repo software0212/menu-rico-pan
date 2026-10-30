@@ -234,6 +234,63 @@
     .items{grid-template-columns:1fr;}
     main{padding:8px 20px 10px 20px;}
   }
+
+  /* =====================================================
+     IMPRESIÓN / GUARDAR COMO PDF
+     (no afecta cómo se ve la página en pantalla)
+     ===================================================== */
+  @page{
+    size:A4;
+    margin:0;
+  }
+
+  @media print{
+    /* Fuerza colores, degradados y fondos tal como en pantalla */
+    *{
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+
+    html, body{
+      width:210mm;
+    }
+
+    body{
+      padding:0;
+    }
+
+    /* La página ocupa todo el ancho de la hoja, sin sombra */
+    .page{
+      max-width:none;
+      width:100%;
+      min-height:0;
+      margin:0;
+      box-shadow:none;
+    }
+
+    /* Encabezado un poco más compacto para que quepa bien en la hoja 1 */
+    header{
+      padding:36px 32px 56px 32px;
+    }
+    .logo-badge{
+      width:150px;
+      margin-bottom:14px;
+    }
+
+    /* Nada se corta a la mitad */
+    header, footer, .scallop, .section, .item{
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+
+    /* Repostería Especial empieza en la hoja 2 */
+    .salto-pagina{
+      break-before:page;
+      page-break-before:always;
+      margin-top:0;
+      padding-top:48px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -284,7 +341,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section salto-pagina">
       <div class="section-title"><span class="script">Repostería</span><span class="bold">Especial</span></div>
       <div class="rule"></div>
       <div class="items">
